@@ -11,6 +11,17 @@ next는 프레임워크
 
 
 
+next에서 특별한 파일명은
+
+layout.~ 
+page.~ 
+not-found.~ 
+
+등이 있다.
+
+
+
+
 next는
 
 app폴더 밑에 page.tsx or .jsx 파일이 있다면, 저절로 layout.tsx나 .jsx 파일을 만들어서 동작하게 해준다.
