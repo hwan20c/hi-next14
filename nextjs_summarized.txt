@@ -8,3 +8,21 @@ next는 프레임워크
 -> 코드를 사용하는 주체(개발자에겐 권한이 없다.) 
 -> 프레임워크는 프로젝트의 틀(frame) 같은 걸 지정해주는 경우들이 대부분이다.
 -> 코드를 올바른 위치에 넣으면 프레임워크가 동작하게 해준다.
+
+
+
+next는
+
+app폴더 밑에 page.tsx or .jsx 파일이 있다면, 저절로 layout.tsx나 .jsx 파일을 만들어서 동작하게 해준다.
+layout.~ 파일은 지워도 저절로 next가 자동 생성해준다.
+
+page.tsx는 root segment라고 불린다.
+
+next js는 폴더명으로 알아서 routing을 해준다.
+예를들어 app밑에 about-us폴더를 만들고 그안에 page.tsx를 만들면
+/about-us 주소로 접근이 가능하다.
+
+폴더안에 폴더를 만들어서 그안에 또 page.tsx파일을 만들면 
+폴더명대로 라우팅이 된다.
+예를들어 about-us/company/sales 밑에 page.tsx를 만들면
+주소접근시에 /about-us/company/sales로 접근이 가능해진다.
