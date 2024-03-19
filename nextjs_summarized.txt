@@ -20,8 +20,6 @@ not-found.~
 등이 있다.
 
 
-
-
 next는
 
 app폴더 밑에 page.tsx or .jsx 파일이 있다면, 저절로 layout.tsx나 .jsx 파일을 만들어서 동작하게 해준다.
@@ -37,3 +35,33 @@ next js는 폴더명으로 알아서 routing을 해준다.
 폴더명대로 라우팅이 된다.
 예를들어 about-us/company/sales 밑에 page.tsx를 만들면
 주소접근시에 /about-us/company/sales로 접근이 가능해진다.
+
+
+
+usePathname을 사용하기 위해서는 "use client"; 라는 글자를 .tsx파일 맨위에 올려줘야한다.
+
+rendering -> react code를 브라우저가 이해할 수 있는 html로 바꾸는 것
+
+react가 rendering하는 방식은 csr(client side rendring)이다. -> 브라우저가 rendering하는것 
+
+csr의 단점 
+1. 자바스크립트가 동작하고 나서 렌더링이 되는 문제
+-> 자바스크립트가 대부분의 것을 다운로드 한 다음에 동작(화면이 보여지게)하게 된다. 
+-> 랜더링이 될때까지 시간이 걸리기 때문에, 페이지를 호출할시 하얀화면(빈페이지)을 보고 시작하는 경우들이 대부분이다.
+-> 자바스크립트를 비활성화 하면 렌더링 자체가 되지 않는다.
+-> 통신이 잘 안 되는 지역에서는 렌더링이 될때까지 오래걸릴 가능성이 있다.
+
+2. seo 검색 엔진 최적화
+-> google같은 검색엔진에서 노출되기 원한다면 google은 html을 읽어서 검색엔진을 만들기 때문에 웹사이트가 노출되는 경우가 줄어들 가능성이 있다.(화면에 접근하지 않으면 하얀화면(빈페이지)를 나타내기 때문이다. -> 빈페이지를 접근하게 된다. -> 검색이 안됌.)
+
+아무런 프레임 워크 없이 create-react-app으로 설치해 서버를 올린다면 csr가 되어 버린다.
+
+반면에, 
+
+next는 자동적으로 ssr(server side rendering)을 하게 끔 되어 있다.
+-> 화면에 표시할 html을 javascript랑은 상관없이 먼저 보여줄 수 있다.
+-> next.js 안에 모든 page의 컴포넌트들을 우선 server에서 rending하는 거다.
+-> backend에서 먼저 올라간다.
+-> 주의해야할점은 모든 컴포넌트에 대해서 발생한다는 점이다.
+-> next.js에서 "use client"; 라는걸 썼다고, csr로 작동하는것이 아니다.
+
