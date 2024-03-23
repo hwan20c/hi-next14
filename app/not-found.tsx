@@ -1,4 +1,9 @@
+import { Metadata } from "next";
 import Navigation from "../compnents/navigation";
+
+export const metadata: Metadata = {
+  title: "Not found",
+};
 
 export default function NotFound() {
   return (
