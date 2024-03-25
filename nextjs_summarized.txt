@@ -160,3 +160,7 @@ Dynamic Routes
 -> params와 searchParams로 받아지는값이 있다. 
 -> searchParams도 ? 뒤에오는 파라미터로 값을 받아 올 수 있다.
 
+----------------------------------------------------------------------------------------
+
+metadata는 client component에서는 쓸 수 없다.
+
