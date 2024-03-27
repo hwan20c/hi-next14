@@ -3,7 +3,7 @@ import Navigation from "../compnents/navigation";
 
 export const metadata: Metadata = {
   //최상위의 layout에서는 밑과 같이 설정이 가능하다.
-  title: { template: "%s | Next Movies", default: "Loading..." },
+  title: { template: "%s | Next Movies", default: "Next Movies" },
   description: "The best movies on the best framework",
 };
 
