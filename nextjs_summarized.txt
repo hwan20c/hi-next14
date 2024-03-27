@@ -183,3 +183,19 @@ loading.tsx
 
 // 따로 따로 결과값을 받게 해서 비동기 적으로 수행할 수 있게 만들어주는것이다. -> 그렇지 않으면 앞에 fetching을 기다려야 하기 때문에 앞에가 끝나지 않으면 뒤에 fetching이 진행이 안되기 때문이다.
   const [movie, viedos] = await Promise.all([getMovie(id), getvideos(id)]);
+-> 하지만 위와 같은 코드에도 문제가 있는게, 앞에 code로 fetching이 될때까지 ui는 안 보여 지는 이슈가 생겨 버린다.
+
+그래서 fetching하는 기능들을 각각의 서버사이드쪽 컴포넌트로 만들어 버린 다음에
+
+    <div>
+      <Suspense fallback={<h1>Loading movie info</h1>}>
+        <MovieInfo id={id} />
+      </Suspense>
+      <Suspense fallback={<h1>Loading movie videos</h1>}>
+        <MovieVideos id={id} />
+      </Suspense>
+    </div>
+
+이런식으로 <Suspense> 라는 react에 있는 tag를 사용하면 따로 따로 랜더링이 되는걸 확인 할 수 있다.
+
+이렇게 return안에 Suspense만 있는 경우에는 loading.tsx가 동작하지 않는다.(Suspense는 따로 동작하기 때문이다.)
