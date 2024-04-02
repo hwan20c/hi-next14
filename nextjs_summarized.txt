@@ -205,3 +205,16 @@ loading.tsx
 
 
 next의 error 처리 페이지는 error.tsx를 넣어주면 처리가 된다.
+
+
+----------------------------------------------------------------------------------------
+
+import styles from "../styles/navigation.module.css";
+
+export default function Navigation() {
+  const path = usePathname();
+  return (
+    <nav className={styles.nav}>
+      <ul>
+
+위와 같이 클래스 이름을 받으면, 랜더링시에 절대로 nav값이 겹치지 않는다. 랜덤으로 className을 가지기 때문이다.
