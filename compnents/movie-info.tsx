@@ -1,8 +1,7 @@
 import potato from "../styles/movie-info.module.css";
 import { API_URL } from "../app/(home)/page";
 
-async function getMovie(id: string) {
-  // await new Promise((resolve) => setTimeout(resolve, 5000));
+export async function getMovie(id: string) {
   const response = await fetch(`${API_URL}/${id}`);
   return response.json();
 }
