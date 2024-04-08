@@ -1,5 +1,5 @@
 import { Metadata } from "next";
-import Navigation from "../compnents/navigation";
+import Navigation from "../components/navigation";
 
 export const metadata: Metadata = {
   title: "Not found",
