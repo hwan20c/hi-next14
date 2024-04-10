@@ -11,7 +11,7 @@ export async function getProviders(id) {
 
 export default function Providers({ id }) {
   const [providers, setProviders] = useState({});
-  const [selectedCountry, setSelectedCountry] = useState("KR"); // 기본값으로 "KR" 설정
+  const [selectedCountry, setSelectedCountry] = useState("KR");
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(null);
 
@@ -47,10 +47,6 @@ export default function Providers({ id }) {
   const rentProviders = providers[selectedCountry]?.rent;
   const buyProviders = providers[selectedCountry]?.buy;
 
-  if (!rentProviders && !buyProviders) {
-    return <p>Doesn't have a provider</p>;
-  }
-
   return (
     <div className={styles.container}>
       <div className={styles.title_area}>
@@ -63,38 +59,43 @@ export default function Providers({ id }) {
           ))}
         </select>
       </div>
-      <div>
-        {rentProviders && rentProviders.length > 0 && (
-          <>
-            <h3 className={styles.type_payment}>Rent</h3>
-            <div className={styles.img_area}>
-              {rentProviders.map((provider, index) => (
-                <div key={index}>
-                  <img
-                    src={`${provider.logo_path}`}
-                    alt={`logo_${provider.provider_name}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-        {buyProviders && buyProviders.length > 0 && (
-          <>
-            <h3 className={styles.type_payment}>Buy</h3>
-            <div className={styles.img_area}>
-              {buyProviders.map((provider, index) => (
-                <div key={index}>
-                  <img
-                    src={`${provider.logo_path}`}
-                    alt={`logo_${provider.provider_name}`}
-                  />
-                </div>
-              ))}
-            </div>
-          </>
-        )}
-      </div>
+      {(rentProviders && rentProviders.length > 0) ||
+      (buyProviders && buyProviders.length > 0) ? (
+        <div>
+          {rentProviders && rentProviders.length > 0 && (
+            <>
+              <h3 className={styles.type_payment}>Rent</h3>
+              <div className={styles.img_area}>
+                {rentProviders.map((provider, index) => (
+                  <div key={index}>
+                    <img
+                      src={`${provider.logo_path}`}
+                      alt={`logo_${provider.provider_name}`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+          {buyProviders && buyProviders.length > 0 && (
+            <>
+              <h3 className={styles.type_payment}>Buy</h3>
+              <div className={styles.img_area}>
+                {buyProviders.map((provider, index) => (
+                  <div key={index}>
+                    <img
+                      src={`${provider.logo_path}`}
+                      alt={`logo_${provider.provider_name}`}
+                    />
+                  </div>
+                ))}
+              </div>
+            </>
+          )}
+        </div>
+      ) : (
+        <p style={{ fontSize: 30 }}>Doesn't have any providers</p>
+      )}
     </div>
   );
 }
