@@ -1,5 +1,7 @@
+import { Suspense } from "react";
 import { API_URL } from "../app/constants";
 import potato from "../styles/movie-info.module.css";
+import Providers from "./providers";
 
 export async function getMovie(id: string) {
   const response = await fetch(`${API_URL}/${id}`);
@@ -22,6 +24,9 @@ export default async function MovieInfo({ id }: { id: string }) {
         <a href={movie.homepage} target={"_blank"}>
           Hompage &rarr;
         </a>
+        <Suspense fallback={<h1>Loading providers</h1>}>
+          <Providers id={id} />
+        </Suspense>
       </div>
     </div>
   );
