@@ -9,18 +9,23 @@ async function getVideos(id: string) {
 
 export default async function MovieVideos({ id }: { id: string }) {
   const videos = await getVideos(id);
-  const limitedVideos = videos.slice(0, 10);
+  const limitedVideos = videos.slice(0, 8);
   return (
     <div className={styles.container}>
-      {limitedVideos.map((video) => (
-        <iframe
-          key={video.id}
-          src={`https://youtube.com/embed/${video.key}`}
-          allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
-          allowFullScreen
-          title={video.name}
-        />
-      ))}
+      <div className={styles.title_area}>
+        <h2 className={styles.title}>Related Vidoes</h2>
+      </div>
+      <div className={styles.iframe_area}>
+        {limitedVideos.map((video) => (
+          <iframe
+            key={video.id}
+            src={`https://youtube.com/embed/${video.key}`}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            allowFullScreen
+            title={video.name}
+          />
+        ))}
+      </div>
     </div>
   );
 }
