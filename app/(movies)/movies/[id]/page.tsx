@@ -1,8 +1,8 @@
 import { Suspense } from "react";
 import MovieInfo, { getMovie } from "../../../../components/movie-info";
 import MovieVideos from "../../../../components/movie-videos";
-import Credits from "../../../../components/credits";
-import Providers from "../../../../components/providers";
+import Credits from "../../../../components/movie-credits";
+import Providers from "../../../../components/movije-providers";
 
 interface IParams {
   params: { id: string };

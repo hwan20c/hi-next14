@@ -9,7 +9,7 @@ async function getVideos(id: string) {
 
 export default async function MovieVideos({ id }: { id: string }) {
   const videos = await getVideos(id);
-  const limitedVideos = videos.slice(0, 8);
+  const limitedVideos = videos.slice(0, 10);
   return (
     <div className={styles.container}>
       {limitedVideos.map((video) => (

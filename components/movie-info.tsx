@@ -1,7 +1,7 @@
 import { Suspense } from "react";
 import { API_URL } from "../app/constants";
 import potato from "../styles/movie-info.module.css";
-import Providers from "./providers";
+import Providers from "./movije-providers";
 
 export async function getMovie(id: string) {
   const response = await fetch(`${API_URL}/${id}`);
