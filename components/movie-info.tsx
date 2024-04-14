@@ -1,7 +1,8 @@
 import { Suspense } from "react";
 import { API_URL } from "../app/constants";
 import potato from "../styles/movie-info.module.css";
-import Providers from "./movije-providers";
+import Providers from "./movie-providers";
+import MovieSimilars from "./movie-similars";
 
 export async function getMovie(id: string) {
   const response = await fetch(`${API_URL}/${id}`);
@@ -26,6 +27,9 @@ export default async function MovieInfo({ id }: { id: string }) {
         </a>
         <Suspense fallback={<h1>Loading providers</h1>}>
           <Providers id={id} />
+        </Suspense>
+        <Suspense fallback={<h1>Loading similar videos</h1>}>
+          <MovieSimilars id={id} />
         </Suspense>
       </div>
     </div>
