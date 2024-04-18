@@ -9,7 +9,13 @@ export async function getMovie(id: string) {
   return response.json();
 }
 
-export default async function MovieInfo({ id }: { id: string }) {
+export default async function MovieInfo({
+  id,
+  showAll,
+}: {
+  id: string;
+  showAll?: boolean;
+}) {
   const movie = await getMovie(id);
   return (
     <div className={potato.container}>
@@ -29,7 +35,7 @@ export default async function MovieInfo({ id }: { id: string }) {
           <Providers id={id} />
         </Suspense>
         <Suspense fallback={<h1>Loading similar videos</h1>}>
-          <MovieSimilars id={id} />
+          <MovieSimilars id={id} showAll={showAll} />
         </Suspense>
       </div>
     </div>

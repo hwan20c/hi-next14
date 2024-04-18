@@ -18,3 +18,16 @@
   border-radius: 10px;
   display: inline-block;
 }
+
+.seeMoreButton {
+  width: 100px;
+  height: 150px;
+  background-color: #000; /* 빈 칸의 배경색 설정 */
+  border-radius: 10px;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}

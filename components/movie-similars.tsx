@@ -1,3 +1,4 @@
+import Link from "next/link";
 import { API_URL } from "../app/constants";
 import styles from "../styles/movie-similars.module.css";
 
@@ -6,20 +7,43 @@ async function getSimilarVideos(id: string) {
   return response.json();
 }
 
-export default async function MovieSimilars({ id }: { id: string }) {
-  const videos = await getSimilarVideos(id);
-  const limitedSimilarVideos = videos.slice(0, 5);
+async function getLimitedSimilarVideos(id: string, limit: number = 5) {
+  const fullCredits = await getSimilarVideos(id);
+  return fullCredits.slice(0, limit);
+}
+
+export default async function MovieSimilars({
+  id,
+  showAll = false,
+}: {
+  id: string;
+  showAll?: boolean;
+}) {
+  const similarVideos = showAll
+    ? await getSimilarVideos(id)
+    : await getLimitedSimilarVideos(id);
   return (
     <div className={styles.container}>
       <div className={styles.title_area}>
         <h2 className={styles.title}>Similar Movies</h2>
       </div>
       <div className={styles.img_area}>
-        {limitedSimilarVideos.map((video) => (
+        {similarVideos.map((video) => (
           <div key={video.id}>
             {video.poster_path ? <img src={`${video.poster_path}`} /> : <div />}
           </div>
         ))}
+        {!showAll && (
+          <div className={styles.placeholder}>
+            <Link
+              className={styles.seeMoreButton}
+              prefetch
+              href={`/movies/${id}/similars`}
+            >
+              See More &rarr;
+            </Link>
+          </div>
+        )}
       </div>
     </div>
   );

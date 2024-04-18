@@ -2,12 +2,12 @@ import Link from "next/link";
 import { API_URL } from "../app/constants";
 import styles from "../styles/movie-credits.module.css";
 
-export async function getFullCredits(id: string) {
+async function getFullCredits(id: string) {
   const response = await fetch(`${API_URL}/${id}/credits`);
   return response.json();
 }
 
-export async function getLimitedCredits(id: string, limit: number = 10) {
+async function getLimitedCredits(id: string, limit: number = 10) {
   const fullCredits = await getFullCredits(id);
   return fullCredits.slice(0, limit);
 }

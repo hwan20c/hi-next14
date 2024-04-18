@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { API_URL } from "../app/constants";
 import styles from "../styles/movie-providers.module.css";
 
-export async function getProviders(id) {
+async function getProviders(id) {
   const response = await fetch(`${API_URL}/${id}/providers`);
   return response.json();
 }
