@@ -1,3 +1,9 @@
+.navWrapper {
+  padding: 10px 20px;
+  position: fixed;
+  top: 20px;
+}
+
 .nav {
   background-color: #2d2d2d;
   position: fixed;
@@ -25,4 +31,17 @@
 
 .nav ul li:hover {
   transform: scale(1.05);
+}
+
+.backButton {
+  background-color: #f0f0f0;
+  border: none;
+  border-radius: 50px;
+  padding: 13px 22px;
+  cursor: pointer;
+  font-size: 16px;
+}
+
+.backButton:hover {
+  background-color: #d0d0d0;
 }

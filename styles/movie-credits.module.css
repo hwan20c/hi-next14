@@ -34,7 +34,6 @@
   height: 150px;
   background-color: #000; /* 빈 칸의 배경색 설정 */
   border-radius: 10px;
-  opacity: 0.8;
   color: #fff;
   text-align: center;
   display: flex;
