@@ -27,5 +27,18 @@
   height: 150px; /* 원하는 높이 설정 */
   background-color: #000; /* 빈 칸의 배경색 설정 */
   border-radius: 10px;
+}
+
+.seeMoreButton {
+  width: 100px;
+  height: 150px;
+  background-color: #000; /* 빈 칸의 배경색 설정 */
+  border-radius: 10px;
   opacity: 0.8;
+  color: #fff;
+  text-align: center;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
 }
